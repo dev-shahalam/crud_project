@@ -13,19 +13,24 @@
 </div>
 
 <div class="container my-5">
+    <div class="row d-flex justify-content-center" >
+        <div class="col-md-10 d-flex justify-content-end pb-3" >
+            <a href="{{route('products.index')}}" class="btn btn-dark" >Back</a>
+        </div>
+    </div>
   <div class="row d-flex justify-content-center" >
       <div class="col-md-10" >
         <div class="card border-o shadow-lg" >
             <div class="card-header" >
                     <h3>Create Product</h3>
             </div>
-            <form action="{{route('product.store')}}" method="post">
+            <form enctype="multipart/form-data" action="{{route('product.store')}}" method="post">
                 @csrf
                 <div class="card-body" >
 
                 <div class="mb-3">
                     <label for="name" class="pb-2 h6">Name</label>
-                    <input type="text" value="{{old('name')}}" name="name" placeholder="Product Name" class="@error('name') is-invalid @enderror form-control form-control-md">
+                    <input type="text" value="{{ old('name') }}" name="name" placeholder="Product Name" class="@error('name') is-invalid @enderror form-control form-control-md">
                     @error('name')
                     <p class="invalid-feedback" >{{$message}}</p>
                     @enderror
@@ -33,7 +38,7 @@
 
                 <div class="mb-3">
                     <label for="sku" class="pb-2 h6">SKU</label>
-                    <input type="text" value="{{old('sku')}}" name="sku" placeholder="Product SKU" class="@error('sku') is-invalid @enderror form-control form-control-md">
+                    <input type="text" value="{{ old('sku') }}" name="sku" placeholder="Product SKU" class="@error('sku') is-invalid @enderror form-control form-control-md">
                     @error('sku')
                     <p class="invalid-feedback" >{{$message}}</p>
                     @enderror
@@ -41,7 +46,7 @@
 
                 <div class="mb-3">
                     <label for="price" class="pb-2 h6" >Price</label>
-                    <input type="text" value="{{old('price')}}" name="price" placeholder="Product Price" class=" @error('price') is-invalid @enderror form-control form-control-md">
+                    <input type="text" value="{{ old('price') }}" name="price" placeholder="Product Price" class=" @error('price') is-invalid @enderror form-control form-control-md">
                     @error('price')
                     <p class="invalid-feedback" >{{$message}}</p>
                     @enderror
@@ -49,12 +54,12 @@
 
                 <div class="mb-3">
                     <label for="description" class="pb-2 h6">Description</label>
-                    <textarea name="description" placeholder="Product Description"  cols="20" rows="5" class="form-control form-control-md"></textarea>
+                    <textarea value="{{ old('description') }}" name="description" placeholder="Product Description"  cols="20" rows="5" class="form-control form-control-md"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="image" class="pb-2 h6" >Image</label>
-                    <input type="file" name="image" class="form-control form-control-md">
+                    <input value="{{ old('image') }}" type="file" name="image" class="form-control form-control-md">
                 </div>
 
                 <div class="d-grid pb-2">
